@@ -249,3 +249,206 @@ p {
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
+
+/* =========================================================================
+   MOBILE OPTIMIZATIONS
+   ========================================================================= */
+
+/* Prevent horizontal overflow globally */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ── Navbar mobile fix ─────────────────────────────────────────────── */
+.cj-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.cj-logo {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Push page content below fixed nav */
+main {
+  padding-top: 72px;
+}
+
+/* ── Hero mobile ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cj-hero {
+    padding: 3rem 1.25rem 3rem !important;
+    min-height: 85vh !important;
+  }
+
+  .cj-hero-title {
+    font-size: clamp(2.6rem, 11vw, 4rem) !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .cj-hero-subtitle {
+    font-size: 1.05rem !important;
+    margin-bottom: 2rem !important;
+    padding: 0 0.5rem;
+  }
+
+  /* Stack hero buttons full-width */
+  .cj-hero > div {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .cj-btn-gold,
+  .cj-btn-outline {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* ── Video section mobile ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Video wrapper full bleed */
+  section:has(iframe) {
+    padding: 3rem 0 !important;
+  }
+
+  section:has(iframe) h2 {
+    padding: 0 1.25rem;
+  }
+
+  section:has(iframe) > div {
+    border-radius: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ── Waitlist form mobile ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #waitlist {
+    padding: 4rem 1.25rem !important;
+    overflow: hidden;
+  }
+
+  #waitlist h2 {
+    font-size: clamp(1.6rem, 7vw, 2.5rem) !important;
+  }
+
+  #waitlist p {
+    font-size: 1rem !important;
+  }
+
+  #waitlist form,
+  #waitlist > div > div {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* ── Ecosystem grid mobile ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cj-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 !important;
+  }
+
+  #ecosystem {
+    padding: 4rem 1.25rem !important;
+  }
+
+  #ecosystem h2 {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .cj-glass-card {
+    border-radius: 16px !important;
+  }
+}
+
+/* ── JOY Blueprint section mobile ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .cj-glass-card[style*="800px"] {
+    margin: 0 1.25rem !important;
+    padding: 2.5rem 1.5rem !important;
+  }
+}
+
+/* ── About / Music page rows mobile ───────────────────────────────── */
+@media (max-width: 768px) {
+  .cj-mantra-row {
+    flex-direction: column !important;
+    padding: 2rem 1.25rem !important;
+    gap: 1.5rem !important;
+  }
+
+  .cj-mantra-row:nth-child(even) {
+    flex-direction: column !important;
+  }
+
+  .cj-mantra-image-container {
+    width: 100% !important;
+    min-height: 240px !important;
+  }
+
+  .cj-mantra-text h2 {
+    font-size: 1.75rem !important;
+  }
+
+  .cj-about-wrapper {
+    padding: 3rem 1.25rem !important;
+  }
+}
+
+/* ── Production page mobile ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cj-prod-hero {
+    padding: 3rem 1.25rem !important;
+  }
+
+  .cj-tiers-grid {
+    padding: 2rem 1.25rem !important;
+  }
+
+  .cj-tier-card.premium {
+    transform: scale(1) !important;
+  }
+}
+
+/* ── Crew Notes mobile ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cj-crew-hero {
+    padding: 3rem 1.25rem !important;
+  }
+
+  .cj-features-grid {
+    padding: 2rem 1.25rem !important;
+  }
+
+  .cj-optin-section {
+    margin: 2rem 1.25rem !important;
+    padding: 2.5rem 1.25rem !important;
+  }
+}
+
+/* ── General container padding on mobile ───────────────────────────── */
+@media (max-width: 768px) {
+  .cj-container {
+    padding: 0 1.25rem !important;
+  }
+}

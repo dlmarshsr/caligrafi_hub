@@ -1,42 +1,18 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
 
-const inputStyle = {
-  padding: '1.2rem',
-  borderRadius: '8px',
-  border: '1px solid var(--glass-border)',
-  background: 'var(--cream-bg)',
-  color: 'var(--navy-primary)',
-  fontSize: '1rem',
-  outline: 'none',
-  width: '100%',
-  fontFamily: 'var(--font-sans)',
-};
-
 function WaitlistForm() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const form = e.target;
-    const data = new FormData(form);
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString(),
-      });
-      setSubmitted(true);
-    } catch (err) {
-      console.error('Form error:', err);
-    } finally {
-      setLoading(false);
+  useEffect(() => {
+    // Load GHL form embed script once
+    if (!document.querySelector('script[src="https://links.marshmagnify.com/js/form_embed.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://links.marshmagnify.com/js/form_embed.js';
+      script.async = true;
+      document.body.appendChild(script);
     }
-  };
+  }, []);
 
   return (
     <section id="waitlist" style={{ padding: '6rem 0', backgroundColor: 'var(--cream-surface)' }}>
@@ -49,48 +25,23 @@ function WaitlistForm() {
           Get early access to the scholarly notes, and a direct line to text Caligrafi Jones.
         </p>
 
-        {submitted ? (
-          <div style={{
-            padding: '3rem 2rem',
-            borderRadius: '16px',
-            background: 'linear-gradient(180deg, rgba(212,175,55,0.08) 0%, var(--cream-bg) 100%)',
-            border: '1px solid var(--gold-primary)',
-            maxWidth: '400px',
-            margin: '0 auto',
-          }}>
-            <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✓</p>
-            <h3 style={{ color: 'var(--navy-primary)', fontSize: '1.5rem', marginBottom: '0.75rem' }}>
-              You're on the list.
-            </h3>
-            <p style={{ color: 'var(--navy-light)', fontSize: '1rem', margin: 0 }}>
-              We'll be in touch with early access details.
-            </p>
-          </div>
-        ) : (
-          <form
-            name="seven-churches-waitlist"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            onSubmit={handleSubmit}
-            style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '400px', margin: '0 auto' }}
-          >
-            <input type="hidden" name="form-name" value="seven-churches-waitlist" />
-            <p style={{ display: 'none' }}><input name="bot-field" /></p>
-
-            <input type="text" name="first-name" placeholder="First Name" required style={inputStyle} />
-            <input type="email" name="email" placeholder="Email Address" required style={inputStyle} />
-            <input type="tel" name="phone" placeholder="Mobile Number (for Texts)" style={inputStyle} />
-            <button
-              type="submit"
-              className="cj-btn-gold"
-              disabled={loading}
-              style={{ marginTop: '1rem', width: '100%', opacity: loading ? 0.7 : 1 }}
-            >
-              {loading ? 'Submitting...' : 'Join The Waitlist →'}
-            </button>
-          </form>
-        )}
+        <iframe
+          src="https://links.marshmagnify.com/widget/form/upz5EsOLZkBuVxFRCaxs"
+          style={{ width: '100%', height: '567px', border: 'none', borderRadius: '8px' }}
+          id="inline-upz5EsOLZkBuVxFRCaxs"
+          data-layout='{"id":"INLINE"}'
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Waitlist"
+          data-height="567"
+          data-layout-iframe-id="inline-upz5EsOLZkBuVxFRCaxs"
+          data-form-id="upz5EsOLZkBuVxFRCaxs"
+          title="Waitlist"
+        />
       </div>
     </section>
   );
@@ -117,6 +68,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* What is JOY Section */}
       <section style={{ padding: '4rem 20px', backgroundColor: 'var(--cream-bg)', display: 'flex', justifyContent: 'center' }}>
         <div className="cj-container cj-glass-card animate-fade-in-up delay-100" style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '4rem 2rem', border: '1px solid var(--gold-primary)', background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, var(--cream-surface) 100%)' }}>
           <h3 style={{ fontFamily: 'var(--font-sans)', color: 'var(--gold-dark)', textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '1rem', marginBottom: '1rem', fontWeight: '700' }}>The Blueprint</h3>
@@ -129,6 +81,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Video Section */}
       <section style={{ padding: '6rem 20px', backgroundColor: 'var(--cream-bg)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--navy-primary)', marginBottom: '3rem', textAlign: 'center' }}>Latest Visuals</h2>
         <div style={{ width: '100%', maxWidth: '900px', aspectRatio: '16/9', borderRadius: '24px', border: '1px solid var(--glass-border)', overflow: 'hidden', boxShadow: 'var(--drop-shadow)', position: 'relative' }}>
@@ -143,8 +96,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Waitlist Form — GHL Embed */}
       <WaitlistForm />
 
+      {/* The Fan Ecosystem Grid */}
       <section id="ecosystem" className="cj-container" style={{ padding: '7rem 20px' }}>
         <h2 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '4rem' }}>The Ecosystem</h2>
         <div className="cj-grid">
