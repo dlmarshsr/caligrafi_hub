@@ -1,0 +1,251 @@
+/* ========================================================================= 
+   CALIGRAFI JONES / JOY CREW HUB - GLOBAL CSS
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Cream Background Core */
+  --cream-bg: #FDFBF7;      
+  --cream-surface: #F4EFE6; 
+  
+  /* Navy Blue Core & Accents */
+  --navy-primary: #1B2B4C;  
+  --navy-surface: #273A63;  
+  --navy-light: #354D80;    
+  --navy-hover: #13203b;
+  
+  /* Classic Gold Accents */
+  --gold-primary: #D4AF37;  
+  --gold-bright: #E5C158;   
+  --gold-dark: #B5952F;     
+  
+  /* Typography Variables */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  
+  /* Glassmorphism Overlays modified for light theme */
+  --glass-bg: rgba(253, 251, 247, 0.7);
+  --glass-border: rgba(27, 43, 76, 0.1); /* Navy border */
+  --glass-blur: blur(20px);
+  --drop-shadow: 0 8px 32px 0 rgba(27, 43, 76, 0.08); /* Soft navy shadow */
+  --gold-glow: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+html, body {
+  background-color: var(--cream-bg);
+  color: var(--navy-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headers are now Navy for contrast */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--navy-primary);
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--navy-light); /* Softer navy for body text readability */
+  line-height: 1.7;
+  font-size: 1.15rem;
+  font-weight: 400; 
+}
+
+::selection {
+  background: var(--gold-primary);
+  color: var(--navy-bg);
+}
+
+.cj-glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: var(--drop-shadow);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.cj-glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+}
+
+.cj-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
+  color: var(--navy-bg) !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(230, 200, 117, 0.3);
+}
+
+.cj-btn-gold:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(230, 200, 117, 0.5);
+}
+
+.cj-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--navy-primary) !important;
+  border: 1px solid var(--navy-primary);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cj-btn-outline:hover {
+  background: rgba(27, 43, 76, 0.05); /* very light navy hover */
+}
+
+/* Gradients changed for cream theme contrast */
+.cj-text-gradient {
+  background: linear-gradient(135deg, var(--navy-primary), var(--navy-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--navy-primary);
+}
+
+.cj-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cj-header {
+  padding: 1.5rem 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(27,43,76,0.1);
+}
+.cj-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cj-logo {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--navy-primary);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.cj-nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.cj-nav-links a {
+  color: rgba(27,43,76,0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.cj-nav-links a:hover {
+  color: var(--gold-dark);
+}
+
+.cj-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 6rem 2rem 4rem;
+  background: radial-gradient(circle at center top, var(--cream-surface) 0%, var(--cream-bg) 70%);
+}
+
+.cj-hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  text-transform: lowercase;
+  color: var(--navy-primary);
+}
+
+.cj-hero-title span {
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--gold-dark);
+}
+
+.cj-hero-subtitle {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  color: var(--navy-light);
+}
+
+.cj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 4rem 0;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
