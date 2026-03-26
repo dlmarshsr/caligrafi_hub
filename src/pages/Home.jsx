@@ -53,25 +53,52 @@ export default function Home() {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="cj-hero animate-fade-in-up">
-        <h1 className="cj-hero-title cj-text-gradient" style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}>
-          keep <span>JOY</span>,<br/>live Disciplined.
-        </h1>
-        <p className="cj-hero-subtitle" style={{ fontSize: '1.25rem', letterSpacing: '0.05em' }}>
-          Home of all things Caligrafi Jones
-        </p>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="#waitlist" className="cj-btn-gold">Join The Waitlist</a>
-          {/* Direct link to Even — no middle page */}
-          <a
-            href="https://www.even.biz/artists/caligrafi-jones"
-            target="_blank"
-            rel="noreferrer"
-            className="cj-btn-outline"
-          >
-            Listen to the Music
-          </a>
+      {/* ── Hero — photo behind the title ────────────────────────────── */}
+      <section
+        className="cj-hero animate-fade-in-up"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          minHeight: '100vh',
+        }}
+      >
+        {/* Background photo */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'url(/images/cali-bg.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 20%',
+          filter: 'grayscale(15%)',
+          zIndex: 0,
+        }} />
+        {/* Overlay — heavier at top and bottom, lighter in middle so photo shows */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to bottom, var(--cream-bg) 0%, rgba(253,251,247,0.45) 35%, rgba(253,251,247,0.45) 65%, var(--cream-bg) 100%)',
+          zIndex: 1,
+        }} />
+
+        {/* Content */}
+        <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '8rem 2rem 4rem', textAlign: 'center' }}>
+          <h1 className="cj-hero-title cj-text-gradient" style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}>
+            keep <span>JOY</span>,<br/>live Disciplined.
+          </h1>
+          <p className="cj-hero-subtitle" style={{ fontSize: '1.25rem', letterSpacing: '0.05em' }}>
+            Home of all things Caligrafi Jones
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="#waitlist" className="cj-btn-gold">Join The Waitlist</a>
+            <a
+              href="https://www.even.biz/artists/caligrafi-jones"
+              target="_blank"
+              rel="noreferrer"
+              className="cj-btn-outline"
+            >
+              Listen to the Music
+            </a>
+          </div>
         </div>
       </section>
 
@@ -84,51 +111,6 @@ export default function Home() {
           </h2>
           <p style={{ fontSize: '1.25rem', color: 'var(--navy-light)', maxWidth: '600px', margin: '0 auto', lineHeight: '1.8' }}>
             True joy isn't a fleeting emotion—it's an immovable anchor. The acronym is the blueprint for a fulfilled life and the foundation of the Joy Crew: prioritizing <strong style={{color: 'var(--navy-primary)'}}>Jesus</strong> first, serving <strong style={{color: 'var(--navy-primary)'}}>Others</strong> second, and taking care of <strong style={{color: 'var(--navy-primary)'}}>Yourself</strong> third.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Artist photo break ───────────────────────────────────────── */}
-      <section style={{
-        position: 'relative',
-        height: '480px',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-        {/* Photo with heavy fade overlay */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'url(/images/cali-bg.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-          filter: 'grayscale(20%)',
-        }} />
-        {/* Top fade */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to bottom, var(--cream-bg) 0%, transparent 30%, transparent 70%, var(--cream-bg) 100%)',
-        }} />
-        {/* Left/right cream wash to keep it subtle */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'rgba(253, 251, 247, 0.35)',
-        }} />
-        {/* Centered text over the photo */}
-        <div style={{ position: 'relative', textAlign: 'center', padding: '0 2rem' }}>
-          <p style={{
-            fontFamily: 'var(--font-serif)',
-            fontStyle: 'italic',
-            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-            color: 'var(--navy-primary)',
-            margin: 0,
-            textShadow: '0 1px 8px rgba(253,251,247,0.8)',
-          }}>
-            "discipline is the bridge<br/>between intention and reality."
           </p>
         </div>
       </section>
@@ -156,14 +138,10 @@ export default function Home() {
         <h2 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '4rem' }}>The Ecosystem</h2>
         <div className="cj-grid">
 
-          {/* Joy Hoodie — mockup image */}
+          {/* Joy Hoodie */}
           <a href="https://joyhoodie.com" target="_blank" rel="noreferrer" className="cj-glass-card animate-fade-in-up delay-100">
             <div style={{ height: '200px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img
-                src="/images/joy-hoodie-mockup.png"
-                style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '0.5rem' }}
-                alt="JOY Hoodie"
-              />
+              <img src="/images/joy-hoodie-mockup.png" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '0.5rem' }} alt="JOY Hoodie" />
             </div>
             <h3>Joy Hoodie</h3>
             <p>Signature apparel representing the movement. Navy and gold standard quality.</p>
@@ -172,30 +150,22 @@ export default function Home() {
             </span>
           </a>
 
-          {/* First Fruits — album cover */}
+          {/* First Fruits — upcoming album */}
           <a href="https://www.even.biz/artists/caligrafi-jones" target="_blank" rel="noreferrer" className="cj-glass-card animate-fade-in-up delay-200">
             <div style={{ height: '200px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem' }}>
-              <img
-                src="/images/firstfruits-cover.jpg"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
-                alt="First Fruits Album"
-              />
+              <img src="/images/firstfruits-cover.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} alt="First Fruits Album" />
             </div>
             <h3>First Fruits</h3>
-            <p>The debut album. Stream and support independent art directly.</p>
+            <p>Upcoming album — available exclusively on Even. Listen to previous releases there now.</p>
             <span className="cj-text-gradient" style={{ fontWeight: 'bold', marginTop: '1.5rem', display: 'flex', alignItems: 'center' }}>
-              Listen Now <ChevronRight size={16}/>
+              Listen on Even <ChevronRight size={16}/>
             </span>
           </a>
 
-          {/* Crew Notes — logo image */}
+          {/* Crew Notes */}
           <Link to="/crew-notes" className="cj-glass-card animate-fade-in-up delay-300">
             <div style={{ height: '200px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem' }}>
-              <img
-                src="/images/crew-notes-logo.png"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                alt="Crew Notes"
-              />
+              <img src="/images/crew-notes-logo.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Crew Notes" />
             </div>
             <h3>Crew Notes</h3>
             <p>Weekly biblical scholarship, the newsletter, and a disciplined faith community.</p>
