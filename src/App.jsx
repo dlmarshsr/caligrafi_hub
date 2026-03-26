@@ -5,6 +5,7 @@ import About from './pages/About';
 import CrewNotes from './pages/CrewNotes';
 import Production from './pages/Production';
 import Music from './pages/Music';
+import IndieAdmin from './pages/IndieAdmin';
 import { Instagram, Youtube, Menu, X } from 'lucide-react';
 import './App.css';
 
@@ -13,6 +14,7 @@ const NAV_LINKS = [
   { label: 'Music', path: '/music' },
   { label: 'Crew Notes', path: '/crew-notes' },
   { label: 'Music Services', path: '/production' },
+  { label: 'Indie Admin', path: '/indie-admin' },
 ];
 
 function NavBar() {
@@ -139,6 +141,7 @@ function App() {
           <Route path="/music" element={<Music />} />
           <Route path="/crew-notes" element={<CrewNotes />} />
           <Route path="/production" element={<Production />} />
+          <Route path="/indie-admin" element={<IndieAdmin />} />
         </Routes>
       </main>
 
