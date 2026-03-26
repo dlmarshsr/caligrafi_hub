@@ -131,6 +131,7 @@ export default function IndieAdmin() {
               target="_blank"
               rel="noreferrer"
               className="cj-btn-outline"
+              style={{ border: '2px solid var(--gold-primary)', color: 'var(--gold-primary)' }}
             >
               Get the Free Checklist
             </a>
