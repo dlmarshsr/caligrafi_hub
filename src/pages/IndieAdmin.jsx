@@ -130,8 +130,20 @@ export default function IndieAdmin() {
               href="https://caligrafijones.gumroad.com/l/indieadminchecklist"
               target="_blank"
               rel="noreferrer"
-              className="cj-btn-outline"
-              style={{ border: '2px solid var(--gold-primary)', color: 'var(--gold-primary)' }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'transparent',
+                color: 'var(--gold-primary)',
+                border: '2px solid var(--gold-primary)',
+                fontFamily: 'var(--font-sans)',
+                fontWeight: 600,
+                fontSize: '1rem',
+                padding: '1rem 2.5rem',
+                borderRadius: '50px',
+                textDecoration: 'none',
+              }}
             >
               Get the Free Checklist
             </a>
