@@ -40,7 +40,7 @@ function BookingCalendar() {
 
   return (
     <iframe
-      src="https://links.marshmagnify.com/widget/booking/jUg7hPVgWRhq6JvaegnD"
+      src="https://links.marshmagnify.com/widget/booking/v0ataI6MlUkXqg4bozaB"
       style={{ width: '100%', height: '700px', border: 'none', borderRadius: '12px' }}
       title="Book a Discovery Call"
     />
