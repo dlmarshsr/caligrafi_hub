@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import './Pages.css';
 import { useSEO } from '../hooks/useSEO';
 
@@ -17,213 +17,33 @@ const WHAT_YOU_GET = [
   },
 ];
 
-const FORM_INITIAL = {
-  name: '',
-  title: '',
-  school: '',
-  email: '',
-  phone: '',
-  package: '',
-  message: '',
-};
-
 function BookingForm() {
-  const [fields, setFields] = useState(FORM_INITIAL);
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleChange = (e) => {
-    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setError('');
-    try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          Name: fields.name,
-          'Title / Role': fields.title,
-          'School or Institution': fields.school,
-          Email: fields.email,
-          Phone: fields.phone || 'Not provided',
-          'Package Interest': fields.package || 'Not specified',
-          Message: fields.message || 'None',
-        }),
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        setError('Something went wrong. Please email directly at music@caligrafijones.com.');
-      }
-    } catch {
-      setError('Something went wrong. Please email directly at music@caligrafijones.com.');
-    } finally {
-      setSubmitting(false);
+  useEffect(() => {
+    if (!document.querySelector('script[src="https://links.marshmagnify.com/js/form_embed.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://links.marshmagnify.com/js/form_embed.js';
+      script.async = true;
+      document.body.appendChild(script);
     }
-  };
-
-  const inputStyle = {
-    width: '100%',
-    padding: '0.85rem 1rem',
-    borderRadius: '8px',
-    border: '1px solid rgba(212,175,55,0.3)',
-    backgroundColor: 'var(--cream-bg)',
-    color: 'var(--navy-primary)',
-    fontFamily: 'var(--font-sans)',
-    fontSize: '1rem',
-    boxSizing: 'border-box',
-    outline: 'none',
-  };
-
-  const labelStyle = {
-    display: 'block',
-    marginBottom: '0.4rem',
-    color: 'rgba(255,255,255,0.85)',
-    fontSize: '0.9rem',
-    fontFamily: 'var(--font-sans)',
-    fontWeight: 500,
-    letterSpacing: '0.03em',
-  };
-
-  if (submitted) {
-    return (
-      <div style={{
-        textAlign: 'center',
-        padding: '4rem 2rem',
-        background: 'rgba(212,175,55,0.1)',
-        borderRadius: '16px',
-        border: '1px solid rgba(212,175,55,0.3)',
-      }}>
-        <p style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: 'clamp(1.4rem, 3vw, 1.8rem)',
-          color: 'var(--gold-primary)',
-          margin: 0,
-        }}>
-          Got it. We'll be in touch within 48 hours.
-        </p>
-      </div>
-    );
-  }
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-      <div className="booking-form-grid">
-        <div>
-          <label style={labelStyle} htmlFor="bf-name">First and Last Name *</label>
-          <input
-            id="bf-name"
-            name="name"
-            type="text"
-            required
-            value={fields.name}
-            onChange={handleChange}
-            style={inputStyle}
-          />
-        </div>
-        <div>
-          <label style={labelStyle} htmlFor="bf-title">Title / Role *</label>
-          <input
-            id="bf-title"
-            name="title"
-            type="text"
-            required
-            value={fields.title}
-            onChange={handleChange}
-            style={inputStyle}
-          />
-        </div>
-      </div>
-
-      <div>
-        <label style={labelStyle} htmlFor="bf-school">School or Institution *</label>
-        <input
-          id="bf-school"
-          name="school"
-          type="text"
-          required
-          value={fields.school}
-          onChange={handleChange}
-          style={inputStyle}
-        />
-      </div>
-
-      <div className="booking-form-grid">
-        <div>
-          <label style={labelStyle} htmlFor="bf-email">Email Address *</label>
-          <input
-            id="bf-email"
-            name="email"
-            type="email"
-            required
-            value={fields.email}
-            onChange={handleChange}
-            style={inputStyle}
-          />
-        </div>
-        <div>
-          <label style={labelStyle} htmlFor="bf-phone">Phone (optional)</label>
-          <input
-            id="bf-phone"
-            name="phone"
-            type="tel"
-            value={fields.phone}
-            onChange={handleChange}
-            style={inputStyle}
-          />
-        </div>
-      </div>
-
-      <div>
-        <label style={labelStyle} htmlFor="bf-package">Which package?</label>
-        <select
-          id="bf-package"
-          name="package"
-          value={fields.package}
-          onChange={handleChange}
-          style={{ ...inputStyle, cursor: 'pointer' }}
-        >
-          <option value="">Select a package</option>
-          <option value="The Show">The Show — $1,000</option>
-          <option value="Show + Workshop">Show + Workshop — $2,000</option>
-          <option value="Full Student Package">Full Student Package — $5,000</option>
-          <option value="Not sure yet">Not sure yet</option>
-        </select>
-      </div>
-
-      <div>
-        <label style={labelStyle} htmlFor="bf-message">Message (optional)</label>
-        <textarea
-          id="bf-message"
-          name="message"
-          rows={4}
-          value={fields.message}
-          onChange={handleChange}
-          placeholder="Any questions or details about your event?"
-          style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.6 }}
-        />
-      </div>
-
-      {error && (
-        <p style={{ color: 'var(--gold-bright)', fontSize: '0.95rem', margin: 0 }}>{error}</p>
-      )}
-
-      <div style={{ paddingTop: '0.5rem' }}>
-        <button
-          type="submit"
-          disabled={submitting}
-          className="cj-btn-gold"
-          style={{ opacity: submitting ? 0.7 : 1, cursor: submitting ? 'wait' : 'pointer', border: 'none' }}
-        >
-          {submitting ? 'Sending…' : 'Send Inquiry'}
-        </button>
-      </div>
-    </form>
+    <iframe
+      src="https://links.marshmagnify.com/widget/form/GuEpltanmTPxroUso2BN"
+      style={{ width: '100%', height: '700px', border: 'none', borderRadius: '8px' }}
+      id="inline-GuEpltanmTPxroUso2BN"
+      data-layout='{"id":"INLINE"}'
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="Form 3"
+      data-layout-iframe-id="inline-GuEpltanmTPxroUso2BN"
+      data-form-id="GuEpltanmTPxroUso2BN"
+      title="Booking Inquiry"
+    />
   );
 }
 
@@ -412,28 +232,6 @@ export default function Booking() {
         </div>
       </section>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .booking-form-grid {
-            display: flex !important;
-            flex-direction: column;
-            gap: 1.25rem;
-          }
-        }
-        @media (min-width: 769px) {
-          .booking-form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-          }
-        }
-        #booking-form input:focus,
-        #booking-form select:focus,
-        #booking-form textarea:focus {
-          border-color: var(--gold-primary);
-          box-shadow: 0 0 0 2px rgba(212,175,55,0.2);
-        }
-      `}</style>
     </div>
   );
 }
