@@ -6,6 +6,8 @@ import CrewNotes from './pages/CrewNotes';
 import Production from './pages/Production';
 import Music from './pages/Music';
 import IndieAdmin from './pages/IndieAdmin';
+import Booking from './pages/Booking';
+import Pay from './pages/Pay';
 import { Instagram, Youtube, Menu, X } from 'lucide-react';
 import './App.css';
 
@@ -13,8 +15,7 @@ const NAV_LINKS = [
   { label: 'About', path: '/about' },
   { label: 'Music', path: '/music' },
   { label: 'Crew Notes', path: '/crew-notes' },
-  { label: 'Music Services', path: '/production' },
-  { label: 'Indie Admin', path: '/indie-admin' },
+  { label: 'Book Cali', path: '/booking' },
 ];
 
 function NavBar() {
@@ -142,6 +143,8 @@ function App() {
           <Route path="/crew-notes" element={<CrewNotes />} />
           <Route path="/production" element={<Production />} />
           <Route path="/indie-admin" element={<IndieAdmin />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/pay" element={<Pay />} />
         </Routes>
       </main>
 
@@ -150,7 +153,7 @@ function App() {
           <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', marginBottom: '1rem', color: '#FFFFFF' }}>
             keep JOY, live Disciplined
           </h2>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
             <a href="https://instagram.com/caligrafijones_" target="_blank" rel="noreferrer"
               style={{ color: 'var(--gold-primary)' }}>
               <Instagram size={28} />
@@ -160,6 +163,11 @@ function App() {
               <Youtube size={32} />
             </a>
           </div>
+          <p style={{ marginBottom: '2rem' }}>
+            <a href="mailto:music@caligrafijones.com" style={{ color: 'var(--gold-primary)', fontSize: '0.95rem', letterSpacing: '0.03em' }}>
+              music@caligrafijones.com
+            </a>
+          </p>
           <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>
             &copy; {new Date().getFullYear()} Caligrafi Jones | All Rights Reserved
           </p>

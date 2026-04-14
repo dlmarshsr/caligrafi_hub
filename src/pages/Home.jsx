@@ -1,87 +1,36 @@
-import { useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
 
-function WaitlistForm() {
-  useEffect(() => {
-    if (!document.querySelector('script[src="https://links.marshmagnify.com/js/form_embed.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://links.marshmagnify.com/js/form_embed.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
-
-  return (
-    <section id="waitlist" style={{ padding: '6rem 0', backgroundColor: 'var(--cream-surface)' }}>
-      <div className="cj-container" style={{ textAlign: 'center', maxWidth: '800px' }}>
-        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: 'var(--navy-primary)' }}>
-          The Seven Churches Diagnostic Series
-        </h2>
-        <p style={{ fontSize: '1.25rem', marginBottom: '2.5rem', color: 'var(--navy-light)' }}>
-          Join the waitlist for the upcoming 7-part deep-dive study on the Churches of Revelation.
-          Get early access to the scholarly notes, and a direct line to text Caligrafi Jones.
-        </p>
-        <iframe
-          src="https://links.marshmagnify.com/widget/form/upz5EsOLZkBuVxFRCaxs"
-          style={{ width: '100%', height: '567px', border: 'none', borderRadius: '8px' }}
-          id="inline-upz5EsOLZkBuVxFRCaxs"
-          data-layout='{"id":"INLINE"}'
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Waitlist"
-          data-height="567"
-          data-layout-iframe-id="inline-upz5EsOLZkBuVxFRCaxs"
-          data-form-id="upz5EsOLZkBuVxFRCaxs"
-          title="Waitlist"
-        />
-      </div>
-    </section>
-  );
-}
-
 export default function Home() {
   useSEO({
     title: 'Caligrafi Jones | keep JOY, live Disciplined',
-    description: 'The official home of Caligrafi Jones. Music, Scripture-serious biblical scholarship, and the disciplined creative life — all under one roof.',
+    description: 'The official home of Caligrafi Jones. Music, faith-driven hip-hop, and the Disciplined Life Blueprint.',
   });
 
   return (
     <>
-      {/* ── Hero — photo behind the title ────────────────────────────── */}
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section
         className="cj-hero animate-fade-in-up"
-        style={{
-          position: 'relative',
-          overflow: 'hidden',
-          minHeight: '100vh',
-        }}
+        style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}
       >
-        {/* Background photo */}
         <div style={{
-          position: 'absolute',
-          inset: 0,
+          position: 'absolute', inset: 0,
           backgroundImage: 'url(/images/cali-bg.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 20%',
-          filter: 'grayscale(15%)',
-          zIndex: 0,
+          backgroundSize: 'cover', backgroundPosition: 'center 20%',
+          filter: 'grayscale(15%)', zIndex: 0,
         }} />
-        {/* Overlay — heavier at top and bottom, lighter in middle so photo shows */}
         <div style={{
-          position: 'absolute',
-          inset: 0,
+          position: 'absolute', inset: 0,
           background: 'linear-gradient(to bottom, var(--cream-bg) 0%, rgba(253,251,247,0.45) 35%, rgba(253,251,247,0.45) 65%, var(--cream-bg) 100%)',
           zIndex: 1,
         }} />
-
-        {/* Content */}
-        <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '8rem 2rem 4rem', textAlign: 'center' }}>
+        <div style={{
+          position: 'relative', zIndex: 2,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+          minHeight: '100vh', padding: '8rem 2rem 4rem', textAlign: 'center',
+        }}>
           <h1 className="cj-hero-title cj-text-gradient" style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}>
             keep <span>JOY</span>,<br/>live Disciplined.
           </h1>
@@ -89,11 +38,10 @@ export default function Home() {
             Home of all things Caligrafi Jones
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#waitlist" className="cj-btn-gold">Join The Waitlist</a>
+            <Link to="/booking" className="cj-btn-gold">Book Cali</Link>
             <a
               href="https://www.even.biz/artists/caligrafi-jones"
-              target="_blank"
-              rel="noreferrer"
+              target="_blank" rel="noreferrer"
               className="cj-btn-outline"
             >
               Listen to the Music
@@ -102,15 +50,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── What is JOY ──────────────────────────────────────────────── */}
+      {/* ── JOY Blueprint ────────────────────────────────────────────── */}
       <section style={{ padding: '4rem 20px', backgroundColor: 'var(--cream-bg)', display: 'flex', justifyContent: 'center' }}>
-        <div className="cj-container cj-glass-card animate-fade-in-up delay-100" style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '4rem 2rem', border: '1px solid var(--gold-primary)', background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, var(--cream-surface) 100%)' }}>
+        <div className="cj-container cj-glass-card animate-fade-in-up delay-100" style={{
+          maxWidth: '800px', display: 'flex', flexDirection: 'column', alignItems: 'center',
+          textAlign: 'center', padding: '4rem 2rem',
+          border: '1px solid var(--gold-primary)',
+          background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, var(--cream-surface) 100%)',
+        }}>
           <h3 style={{ fontFamily: 'var(--font-sans)', color: 'var(--gold-dark)', textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '1rem', marginBottom: '1rem', fontWeight: '700' }}>The Blueprint</h3>
           <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--navy-primary)', marginBottom: '1.5rem', lineHeight: '1.1' }}>
             JESUS.<br/>OTHERS.<br/>YOURSELF.
           </h2>
           <p style={{ fontSize: '1.25rem', color: 'var(--navy-light)', maxWidth: '600px', margin: '0 auto', lineHeight: '1.8' }}>
-            True joy isn't a fleeting emotion—it's an immovable anchor. The acronym is the blueprint for a fulfilled life and the foundation of the Joy Crew: prioritizing <strong style={{color: 'var(--navy-primary)'}}>Jesus</strong> first, serving <strong style={{color: 'var(--navy-primary)'}}>Others</strong> second, and taking care of <strong style={{color: 'var(--navy-primary)'}}>Yourself</strong> third.
+            True joy isn't a fleeting emotion—it's an immovable anchor. The acronym is the blueprint for a fulfilled life and the foundation of the Joy Crew: prioritizing <strong style={{ color: 'var(--navy-primary)' }}>Jesus</strong> first, serving <strong style={{ color: 'var(--navy-primary)' }}>Others</strong> second, and taking care of <strong style={{ color: 'var(--navy-primary)' }}>Yourself</strong> third.
           </p>
         </div>
       </section>
@@ -130,52 +83,152 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Waitlist Form ────────────────────────────────────────────── */}
-      <WaitlistForm />
+      {/* ── Book Cali ────────────────────────────────────────────────── */}
+      <section style={{ padding: '6rem 2rem', backgroundColor: 'var(--navy-primary)' }}>
+        <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{
+            fontFamily: 'var(--font-sans)',
+            color: 'var(--gold-primary)',
+            letterSpacing: '0.25em',
+            textTransform: 'uppercase',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            marginBottom: '1.25rem',
+          }}>
+            Campus Booking
+          </p>
+          <h2 style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            color: '#FFFFFF',
+            lineHeight: 1.2,
+            marginBottom: '1.25rem',
+          }}>
+            A Live Show. A Real Curriculum. One Visit.
+          </h2>
+          <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, marginBottom: '2rem' }}>
+            Caligrafi Jones brings faith-driven hip-hop and the Disciplined Life Blueprint to your campus — a performance and workshop experience built for college and university students.
+          </p>
+          <Link to="/booking" className="cj-btn-gold">Inquire About Booking</Link>
+        </div>
+      </section>
 
-      {/* ── Ecosystem Grid ───────────────────────────────────────────── */}
-      <section id="ecosystem" className="cj-container" style={{ padding: '7rem 20px' }}>
-        <h2 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '4rem' }}>The Ecosystem</h2>
-        <div className="cj-grid">
+      {/* ── Ecosystem ────────────────────────────────────────────────── */}
+      <section id="ecosystem" style={{ padding: '6rem 20px', backgroundColor: 'var(--cream-bg)' }}>
+        <div className="cj-container">
+          <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', marginBottom: '3rem', color: 'var(--navy-primary)' }}>
+            The Ecosystem
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1.25rem' }}>
 
-          {/* Joy Hoodie */}
-          <a href="https://joyhoodie.com" target="_blank" rel="noreferrer" className="cj-glass-card animate-fade-in-up delay-100">
-            <div style={{ height: '200px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img src="/images/joy-hoodie-mockup.png" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '0.5rem' }} alt="JOY Hoodie" />
-            </div>
-            <h3>Joy Hoodie</h3>
-            <p>Signature apparel representing the movement. Navy and gold standard quality.</p>
-            <span className="cj-text-gradient" style={{ fontWeight: 'bold', marginTop: '1.5rem', display: 'flex', alignItems: 'center' }}>
-              Shop Merch <ChevronRight size={16}/>
-            </span>
-          </a>
+            {/* Joy Hoodie */}
+            <a href="https://joyhoodie.com" target="_blank" rel="noreferrer" style={cardStyle}>
+              <div style={imgWrap}>
+                <img src="/images/joy-hoodie-mockup.png" style={imgStyle} alt="JOY Hoodie" />
+              </div>
+              <strong style={cardTitle}>Joy Hoodie</strong>
+              <p style={cardBody}>Signature apparel. Navy and gold.</p>
+              <span className="cj-text-gradient" style={cardLink}>Shop Merch <ChevronRight size={14}/></span>
+            </a>
 
-          {/* First Fruits — upcoming album */}
-          <a href="https://www.even.biz/artists/caligrafi-jones" target="_blank" rel="noreferrer" className="cj-glass-card animate-fade-in-up delay-200">
-            <div style={{ height: '200px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem' }}>
-              <img src="/images/firstfruits-cover.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} alt="First Fruits Album" />
-            </div>
-            <h3>First Fruits</h3>
-            <p>Upcoming album — available exclusively on Even. Listen to previous releases there now.</p>
-            <span className="cj-text-gradient" style={{ fontWeight: 'bold', marginTop: '1.5rem', display: 'flex', alignItems: 'center' }}>
-              Listen on Even <ChevronRight size={16}/>
-            </span>
-          </a>
+            {/* First Fruits */}
+            <a href="https://www.even.biz/artists/caligrafi-jones" target="_blank" rel="noreferrer" style={cardStyle}>
+              <div style={imgWrap}>
+                <img src="/images/firstfruits-cover.jpg" style={{ ...imgStyle, objectPosition: 'center top' }} alt="First Fruits" />
+              </div>
+              <strong style={cardTitle}>First Fruits</strong>
+              <p style={cardBody}>Upcoming album on Even.</p>
+              <span className="cj-text-gradient" style={cardLink}>Listen on Even <ChevronRight size={14}/></span>
+            </a>
 
-          {/* Crew Notes */}
-          <Link to="/crew-notes" className="cj-glass-card animate-fade-in-up delay-300">
-            <div style={{ height: '200px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem' }}>
-              <img src="/images/crew-notes-logo.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Crew Notes" />
-            </div>
-            <h3>Crew Notes</h3>
-            <p>Weekly biblical scholarship, the newsletter, and a disciplined faith community.</p>
-            <span className="cj-text-gradient" style={{ fontWeight: 'bold', marginTop: '1.5rem', display: 'flex', alignItems: 'center' }}>
-              Read Notes <ChevronRight size={16}/>
-            </span>
-          </Link>
+            {/* Crew Notes */}
+            <Link to="/crew-notes" style={cardStyle}>
+              <div style={imgWrap}>
+                <img src="/images/crew-notes-logo.png" style={imgStyle} alt="Crew Notes" />
+              </div>
+              <strong style={cardTitle}>Crew Notes</strong>
+              <p style={cardBody}>Biblical scholarship & the newsletter.</p>
+              <span className="cj-text-gradient" style={cardLink}>Read Notes <ChevronRight size={14}/></span>
+            </Link>
 
+            {/* Music Services */}
+            <Link to="/production" style={cardStyle}>
+              <div style={{ ...imgWrap, background: 'var(--navy-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--gold-primary)', fontSize: '1.1rem', textAlign: 'center', padding: '0.5rem' }}>
+                  The Momentum Model
+                </span>
+              </div>
+              <strong style={cardTitle}>Music Services</strong>
+              <p style={cardBody}>Production retainers for independent artists.</p>
+              <span className="cj-text-gradient" style={cardLink}>Learn More <ChevronRight size={14}/></span>
+            </Link>
+
+            {/* Indie Admin */}
+            <Link to="/indie-admin" style={cardStyle}>
+              <div style={{ ...imgWrap, background: 'var(--navy-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontFamily: 'var(--font-sans)', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', textAlign: 'center', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.5rem' }}>
+                  Indie Admin
+                </span>
+              </div>
+              <strong style={cardTitle}>Indie Admin</strong>
+              <p style={cardBody}>Tools for independent artist operations.</p>
+              <span className="cj-text-gradient" style={cardLink}>Explore <ChevronRight size={14}/></span>
+            </Link>
+
+          </div>
         </div>
       </section>
     </>
   );
 }
+
+const cardStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  background: 'var(--glass-bg)',
+  border: '1px solid var(--glass-border)',
+  borderRadius: '16px',
+  overflow: 'hidden',
+  textDecoration: 'none',
+  color: 'inherit',
+  boxShadow: 'var(--drop-shadow)',
+  transition: 'transform 0.2s ease',
+};
+
+const imgWrap = {
+  height: '140px',
+  overflow: 'hidden',
+  background: '#f0f0f0',
+};
+
+const imgStyle = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+};
+
+const cardTitle = {
+  display: 'block',
+  fontFamily: 'var(--font-sans)',
+  fontSize: '0.95rem',
+  color: 'var(--navy-primary)',
+  padding: '0.9rem 1rem 0.25rem',
+};
+
+const cardBody = {
+  fontSize: '0.82rem',
+  color: 'var(--navy-light)',
+  lineHeight: 1.5,
+  margin: 0,
+  padding: '0 1rem',
+  flex: 1,
+};
+
+const cardLink = {
+  fontWeight: 700,
+  fontSize: '0.82rem',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '2px',
+  padding: '0.75rem 1rem 1rem',
+};
